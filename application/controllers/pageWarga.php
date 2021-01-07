@@ -14,7 +14,7 @@ class pageWarga extends CI_Controller
         $data['user'] = $this->M_warga->profile_user($where, $table)->result();
 
         $this->load->view('templatesWarga/header');
-        $this->load->view('templatesWarga/sidebar');
+        // $this->load->view('templatesWarga/sidebar');
         $this->load->view('warga/surat', $data);
         $this->load->view('templatesWarga/footer');
     }

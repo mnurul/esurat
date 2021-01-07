@@ -1,12 +1,12 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar sidebar-primary elevation-4" style="background-color: #F4F6F9;">
     <!-- Brand Logo -->
-    <a href="<?php echo base_url('pageWarga/warga') ?>" class="brand-link">
-        <img src="<?php echo base_url() ?>assets/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="logo-md" style="font-size: 15px;"><b><?= $this->session->userdata('username'); ?></span>
+    <a href="<?php echo base_url('pageWarga/index') ?>" class="brand-link">
+        <img src="<?php echo base_url() ?>assets/dist/img/logoPemda1.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-8" style="opacity: .8">
+        <span class="logo-md" style="font-size: 20px;"><b><?= $this->session->userdata('username'); ?></span>
     </a>
 
     <!-- Sidebar -->
-    <div class="sidebar">
+    <div class="sidebar" style="background-color: #F4F6F9;">
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
@@ -15,14 +15,14 @@
                with font-awesome or any other icon font library -->
                 <li class="nav-item has-treeview menu-open">
                     <a class="nav-link active" href="<?php echo base_url('pageWarga/trakingSurat') ?>">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <span>Lacak Surat Anda<span>
+                        <!-- <i class="nav-icon fas fa-tachometer-alt"></i> -->
+                        <span class="menu-sidebar" style="font-size: 13px;">Lacak Surat Anda<span>
                     </a>
                 </li>
                 <li class="nav-item has-treeview menu-open">
                     <a class="nav-link active" href="<?php echo base_url('pageWarga/index') ?>">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <span>Permohonan Surat<span>
+                        <!-- <i class="nav-icon fas fa-tachometer-alt"></i> -->
+                        <span class="menu-sidebar">Permohonan Surat<span>
                     </a>
                 </li>
 
@@ -42,8 +42,8 @@
 
                 <li class="nav-item has-treeview menu-open">
                     <a href="<?= base_url()   ?>auth/logout" class="nav-link active">
-                        <i class="fas fa-fw fa-sign-out-alt"></i>
-                        <span>Logout</span>
+                        <!-- <i class="fas fa-fw fa-sign-out-alt"></i> -->
+                        <span class="menu-sidebar">Logout</span>
                     </a>
                 </li>
             </ul>
