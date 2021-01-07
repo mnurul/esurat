@@ -14,9 +14,9 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item has-treeview menu-open">
-                    <a class="nav-link active" href="<?php echo base_url('pageWarga/warga') ?>">
+                    <a class="nav-link active" href="<?php echo base_url('pageWarga/trakingSurat') ?>">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <span>Beranda<span>
+                        <span>Lacak Surat Anda<span>
                     </a>
                 </li>
                 <li class="nav-item has-treeview menu-open">

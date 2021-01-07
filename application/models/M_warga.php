@@ -55,4 +55,9 @@ class M_warga extends CI_Model
             return array();
         }
     }
+
+    public function surat($where, $table)
+    {
+        return $this->db->get_where($table, $where);
+    }
 }

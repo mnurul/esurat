@@ -30,6 +30,21 @@ class pageWarga extends CI_Controller
         $this->load->view('templatesWarga/footer');
     }
 
+    public function trakingSurat()
+    {
+        $id_user = $this->session->userdata('id_user');
+        $nik = $this->session->userdata('nik');
+        $where = array('nik' => $nik);
+        $table = 'tb_surat_masuk_rt';
+        $data['surat'] = $this->M_warga->surat($where, $table)->result();
+        // var_dump($data['user'], $id_user);
+        // die();
+        $this->load->view('templatesWarga/header');
+        $this->load->view('templatesWarga/sidebar');
+        $this->load->view('warga/trakingSurat', $data);
+        $this->load->view('templatesWarga/footer');
+    }
+
     public function prosesSurat($nik)
     {
         $nik = $this->M_warga->cek_nik($nik);

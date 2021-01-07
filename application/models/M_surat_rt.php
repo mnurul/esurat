@@ -2,6 +2,7 @@
 
 class M_surat_rt extends CI_Model
 {
+
     public function tampil_data()
     {
         $this->db->select('*');
