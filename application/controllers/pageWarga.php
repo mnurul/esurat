@@ -4,7 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class pageWarga extends CI_Controller
 {
-    public function index()
+    public function inputSurat()
     {
         //$data['warga'] = $this->M_warga->tampil_data()->result();
         $data['id_user'] = $this->session->userdata('id_user');
@@ -14,8 +14,24 @@ class pageWarga extends CI_Controller
         $data['user'] = $this->M_warga->profile_user($where, $table)->result();
 
         $this->load->view('templatesWarga/header');
-        // $this->load->view('templatesWarga/sidebar');
+        $this->load->view('templatesWarga/sidebar');
         $this->load->view('warga/surat', $data);
+        $this->load->view('templatesWarga/footer');
+    }
+
+    public function index()
+    {
+
+        $id_user = $this->session->userdata('id_user');
+        $nik = $this->session->userdata('nik');
+        $where = array('nik' => $nik);
+        $table = 'tb_surat_masuk_rt';
+        $data['surat'] = $this->M_warga->surat($where, $table)->result();
+        // var_dump($data['user'], $id_user);
+        // die();
+        $this->load->view('templatesWarga/header');
+        $this->load->view('templatesWarga/sidebar');
+        $this->load->view('warga/trakingSurat', $data);
         $this->load->view('templatesWarga/footer');
     }
 

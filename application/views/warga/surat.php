@@ -12,7 +12,9 @@
         <div class="container">
             <div class="card">
                 <div class="card-header">
-                    Pengajuan Surat Kelurahan
+                    <nav class="navbar navbar">
+                        <span class="navbar-brand mb-0 h1" style="font-size: 25px;">Pengajuan Surat Kelurahan</span>
+                    </nav>
                 </div>
                 <div class="card-body">
                     <?php echo $this->session->flashdata('pesan') ?>

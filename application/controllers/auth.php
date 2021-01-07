@@ -73,8 +73,11 @@ class Auth extends CI_Controller
 
                 if ($auth->role_id == "1") {
                     $this->session->set_userdata('email', $auth->email);
-                    $this->session->set_userdata('nama', $auth->nama);
-                    redirect('admin/data_surat');
+                    // $this->session->set_userdata('nama', $auth->nama);
+                    $this->session->set_userdata('username', $auth->username);
+                    $this->session->set_userdata('id_user', $auth->id_user);
+                    $this->session->set_userdata('nik', $auth->nik);
+                    redirect('Manage_profile/index');
                 } else if ($auth->role_id == "2") {
                     $this->session->set_userdata('email', $auth->email);
                     // $this->session->set_userdata('nama', $auth->nama);

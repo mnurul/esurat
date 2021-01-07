@@ -1,8 +1,8 @@
 <aside class="main-sidebar sidebar-primary elevation-4" style="background-color: #F4F6F9;">
     <!-- Brand Logo -->
-    <a href="<?php echo base_url('pageWarga/index') ?>" class="brand-link">
+    <a href="<?php echo base_url('pageWarga/index') ?>" class="brand-link ">
         <img src="<?php echo base_url() ?>assets/dist/img/logoPemda1.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-8" style="opacity: .8">
-        <span class="logo-md" style="font-size: 20px;"><b><?= $this->session->userdata('username'); ?></span>
+        <span class="logo-md" style="font-size: 16px;"><b>Sistem Pengajuan Surat</span>
     </a>
 
     <!-- Sidebar -->
@@ -20,7 +20,7 @@
                     </a>
                 </li>
                 <li class="nav-item has-treeview menu-open">
-                    <a class="nav-link active" href="<?php echo base_url('pageWarga/index') ?>">
+                    <a class="nav-link active" href="<?php echo base_url('pageWarga/inputSurat') ?>">
                         <!-- <i class="nav-icon fas fa-tachometer-alt"></i> -->
                         <span class="menu-sidebar">Permohonan Surat<span>
                     </a>

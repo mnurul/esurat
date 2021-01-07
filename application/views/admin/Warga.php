@@ -3,61 +3,58 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0 text-dark">Warga</h1>
+                <!-- <h1 class="m-0 text-dark">Warga</h1> -->
             </div><!-- /.col -->
         </div><!-- /.row -->
     </div><!-- /.container-fluid -->
 
     <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">
+                <nav class="navbar navbar">
+                    <span class="navbar-brand mb-0 h1" style="font-size: 25px;">Profil Warga</span>
+                </nav>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <button class="btn btn-sm btn-primary mb-3" data-toggle="modal" data-target="#tambah_warga"><i class="fas fa-plus fa-sm"></i> Tambah Data Jasa </button>
+                    <table class="table table-bordered table-hover">
+                        <tr class="text-center">
+                            <th>NO</th>
+                            <th>NIK</th>
+                            <th>NAMA</th>
+                            <th>ALAMAT</th>
+                            <th>Jenis Kelamin</th>
+                            <th>RT</th>
+                            <th>RW</th>
+                            <th>KELURAHAN</th>
+                            <th colspan="3">AKSI</th>
+                        </tr>
 
-        <button class="btn btn-sm btn-primary mb-3" data-toggle="modal" data-target="#tambah_warga"><i class="fas fa-plus fa-sm"></i> Tambah Data Jasa </button>
+                        <?php
+                        $no = 1;
+                        foreach ($warga as $wg) :
+                        ?>
+                            <tr style="text-align: center;">
+                                <td><?php echo $no++ ?></td>
+                                <td><?php echo $wg->nik ?></td>
+                                <td><?php echo $wg->nama ?></td>
+                                <td><?php echo $wg->alamat ?></td>
+                                <td><?php echo $wg->jenis_kelamin ?></td>
+                                <td><?php echo $wg->rt ?></td>
+                                <td><?php echo $wg->rw ?></td>
+                                <td><?php echo $wg->kelurahan ?></td>
 
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover">
-                <tr class="text-center">
-                    <th>NO</th>
-                    <th>NIK</th>
-                    <th>NAMA</th>
-                    <th>Tempat lahir</th>
-                    <th>Tanggal lahir</th>
-                    <th>ALAMAT</th>
-                    <th>AGAMA</th>
-                    <th>Jenis Kelamin</th>
-                    <th>PENDIDIKAN</th>
-                    <th>PEKERJAAN</th>
-                    <th>RT</th>
-                    <th>RW</th>
-                    <th>KELURAHAN</th>
-                    <th colspan="3">AKSI</th>
-                </tr>
+                                <td> <?php echo anchor('Warga/detail_warga/' . $wg->id_warga, '<div class="btn btn-success btn-sm"><i class="fas fa-search-plus"></i></div>') ?> </td>
+                                <td> <?php echo anchor('Warga/edit_warga/' . $wg->id_warga, '<div class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></div>') ?> </td>
+                                <td> <?php echo anchor('Warga/hapus_warga/' . $wg->id_warga, '<div class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></div>') ?> </td>
+                            </tr>
 
-                <?php
-                $no = 1;
-                foreach ($warga as $wg) :
-                ?>
-                    <tr>
-                        <td><?php echo $no++ ?></td>
-                        <td><?php echo $wg->nik ?></td>
-                        <td><?php echo $wg->nama ?></td>
-                        <td><?php echo $wg->tempat_lahir ?></td>
-                        <td><?php echo $wg->tgl_lahir ?></td>
-                        <td><?php echo $wg->alamat ?></td>
-                        <td><?php echo $wg->agama ?></td>
-                        <td><?php echo $wg->jenis_kelamin ?></td>
-                        <td><?php echo $wg->pendidikan ?></td>
-                        <td><?php echo $wg->pekerjaan ?></td>
-                        <td><?php echo $wg->rt ?></td>
-                        <td><?php echo $wg->rw ?></td>
-                        <td><?php echo $wg->kelurahan ?></td>
+                        <?php endforeach; ?>
 
-                        <td> <?php echo anchor('Warga/detail_warga/' . $wg->id_warga, '<div class="btn btn-success btn-sm"><i class="fas fa-search-plus"></i></div>') ?> </td>
-                        <td> <?php echo anchor('Warga/edit_warga/' . $wg->id_warga, '<div class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></div>') ?> </td>
-                        <td> <?php echo anchor('Warga/hapus_warga/' . $wg->id_warga, '<div class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></div>') ?> </td>
-                    </tr>
-
-                <?php endforeach; ?>
-
-            </table>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 

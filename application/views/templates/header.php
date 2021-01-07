@@ -27,6 +27,9 @@
     <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/summernote/summernote-bs4.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="<?php echo base_url() ?>assets/dist/css/myCss.css">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -39,16 +42,18 @@
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
-                <li class="nav-item d-none d-sm-inline-block">
+                <li class="nav-item"> <a class="nav-link">Selamat Datang, <?= $this->session->userdata('username'); ?></a>
+                </li>
+                <!-- <li class="nav-item d-none d-sm-inline-block">
                     <a href="index3.html" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="#" class="nav-link">Contact</a>
-                </li>
+                </li> -->
             </ul>
 
             <!-- SEARCH FORM -->
-            <form class="form-inline ml-3">
+            <!-- <form class="form-inline ml-3">
                 <div class="input-group input-group-sm">
                     <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
                     <div class="input-group-append">
@@ -57,6 +62,6 @@
                         </button>
                     </div>
                 </div>
-            </form>
+            </form> -->
 
         </nav>
