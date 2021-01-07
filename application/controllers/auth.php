@@ -96,6 +96,13 @@ class Auth extends CI_Controller
                     $this->session->set_userdata('id_user', $auth->id_user);
                     $this->session->set_userdata('nik', $auth->nik);
                     redirect('pageRT/index');
+                } else if ($auth->role_id == "5") {
+                    $this->session->set_userdata('email', $auth->email);
+                    // $this->session->set_userdata('nama', $auth->nama);
+                    $this->session->set_userdata('username', $auth->username);
+                    $this->session->set_userdata('id_user', $auth->id_user);
+                    $this->session->set_userdata('nik', $auth->nik);
+                    redirect('pageAparat/index');
                 } else {
                     $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissible fade show" role="alert">
                       <strong>Username atau Password Kamu Salah!!!.
