@@ -63,7 +63,7 @@ class pageWarga extends CI_Controller
 
     public function prosesSurat($nik)
     {
-        $nik = $this->M_warga->cek_nik($nik);
+        $dataWarga = $this->M_warga->cek_nik($nik);
         $nik          = $this->input->post('nik');
         $nama          = $this->input->post('nama');
         $jkel          = $this->input->post('jkel');
@@ -74,10 +74,13 @@ class pageWarga extends CI_Controller
 
         $data = array(
             'jenis_surat' => $jenis_surat,
-            'id_warga' => $nik->id_warga,
+            'id_warga' => $dataWarga->id_warga,
+            'nik' => $nik,
             'perihal' => $maksud_keperluan,
             'status_izin_rt' => $status_izin_rt
         );
+        // var_dump($data);
+        // die();
 
         $this->db->insert('tb_surat_masuk_rt', $data);
 
