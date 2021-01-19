@@ -12,6 +12,15 @@ class M_surat_rt extends CI_Model
         return $query;
     }
 
+    public function tampil_rekap()
+    {
+        $this->db->select('*');
+        $this->db->from('tb_rekap_data');
+        // $this->db->join('tb_warga', 'tb_warga.nik = tb_rekap_data.nik');
+        $query = $this->db->get();
+        return $query;
+    }
+
     public function tampil_warga()
     {
         $this->db->select('id_warga');
@@ -66,5 +75,10 @@ class M_surat_rt extends CI_Model
         } else {
             return array();
         }
+    }
+
+    public function tambah_rekap($data, $table)
+    {
+        $this->db->insert($table, $data);
     }
 }

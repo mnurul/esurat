@@ -101,4 +101,31 @@ class pageRT extends CI_Controller
         $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">Delete surat permohonan Success!!</div>');
         redirect('pageRT/index');
     }
+
+    public function dataPenduduk()
+    {
+        $data['rekap'] = $this->M_surat_rt->tampil_rekap()->result();
+        $this->load->view('templatesRT/header');
+        $this->load->view('templatesRT/sidebar');
+        $this->load->view('rt/dataPenduduk', $data);
+        $this->load->view('templatesRT/footer');
+    }
+
+    public function tambah_rekap()
+    {
+        $nik = $this->input->post('nik');
+        $keterangan = $this->input->post('keterangan');
+        $status_rumah = $this->input->post('status_rumah');
+        $status_keluarga = $this->input->post('status_keluarga');
+
+        $data = array(
+            'nik' => $nik,
+            'keterangan' => $keterangan,
+            'status_rumah' => $status_rumah,
+            'status_keluarga' => $status_keluarga,
+        );
+
+        $this->M_surat_rt->tambah_rekap($data, 'tb_rekap_data');
+        redirect('pageRT/dataPenduduk');
+    }
 }
