@@ -64,6 +64,10 @@ class pageWarga extends CI_Controller
     public function prosesSurat($nik)
     {
         $nik = $this->M_warga->cek_nik($nik);
+        $nik          = $this->input->post('nik');
+        $nama          = $this->input->post('nama');
+        $jkel          = $this->input->post('jkel');
+        $agama          = $this->input->post('agama');
         $jenis_surat          = $this->input->post('jenis_surat');
         $maksud_keperluan     = $this->input->post('maksud_keperluan');
         $status_izin_rt       = $this->input->post('status_izin_rt');
