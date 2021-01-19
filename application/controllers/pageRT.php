@@ -105,6 +105,8 @@ class pageRT extends CI_Controller
     public function dataPenduduk()
     {
         $data['rekap'] = $this->M_surat_rt->tampil_rekap()->result();
+        // var_dump($data['rekap']);
+        // die();
         $this->load->view('templatesRT/header');
         $this->load->view('templatesRT/sidebar');
         $this->load->view('rt/dataPenduduk', $data);
@@ -114,18 +116,79 @@ class pageRT extends CI_Controller
     public function tambah_rekap()
     {
         $nik = $this->input->post('nik');
+        $rt = $this->input->post('rt');
         $keterangan = $this->input->post('keterangan');
         $status_rumah = $this->input->post('status_rumah');
         $status_keluarga = $this->input->post('status_keluarga');
 
         $data = array(
             'nik' => $nik,
+            'rt' => $rt,
             'keterangan' => $keterangan,
             'status_rumah' => $status_rumah,
             'status_keluarga' => $status_keluarga,
         );
 
+        // var_dump($data);
+        // die();
+
         $this->M_surat_rt->tambah_rekap($data, 'tb_rekap_data');
+        redirect('pageRT/dataPenduduk');
+    }
+
+    public function detail_rekap($id_rekap_data)
+    {
+        $where = array('id_rekap_data' => $id_rekap_data);
+        $data['rekap'] = $this->M_surat_rt->detail_rekap($id_rekap_data);
+        $this->load->view('templatesRT/header');
+        $this->load->view('templatesRT/sidebar');
+        $this->load->view('rt/detail_rekap', $data);
+        $this->load->view('templatesRT/footer');
+    }
+
+    public function edit_rekap($id_rekap_data)
+    {
+        $where = array('id_rekap_data' => $id_rekap_data);
+        $data['rekap'] = $this->M_surat_rt->edit_rekap($where, 'tb_rekap_data')->result();
+        $this->load->view('templatesRT/header');
+        $this->load->view('templatesRT/sidebar');
+        $this->load->view('rt/edit_rekap', $data);
+        $this->load->view('templatesRT/footer');
+    }
+
+    public function update_rekap($id_rekap_data)
+    {
+        $nik               = $this->input->post('nik');
+        $keterangan              = $this->input->post('keterangan');
+        $status_rumah      = $this->input->post('status_rumah');
+        $status_keluarga      = $this->input->post('status_keluarga');
+
+        $data = array(
+            'nik'               => $nik,
+            'keterangan'              => $keterangan,
+            'status_rumah'      => $status_rumah,
+            'status_keluarga'     => $status_keluarga,
+        );
+
+        $where = array(
+            'id_rekap_data' => $id_rekap_data
+        );
+
+        if ($this->M_surat_rt->update_rekap($where, $data, 'tb_rekap_data')) {
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Update Data Rekap Berhasil</div>');
+            redirect('pageRT/dataPenduduk');
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Update Data Rekap belum Berhasil</div>');
+            redirect('pageRT/dataPenduduk');
+        }
+    }
+
+    public function hapus_rekap($id_rekap_data)
+    {
+        $where = array('id_rekap_data' => $id_rekap_data);
+        $this->M_surat_rt->hapus_rekap($where, 'tb_rekap_data');
+
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Hapus Data Rekap Berhasil</div>');
         redirect('pageRT/dataPenduduk');
     }
 }

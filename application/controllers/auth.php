@@ -45,6 +45,8 @@ class Auth extends CI_Controller
             $password     = $this->input->post('password');
             $auth = $this->model_auth->cek_login($email, $password);
 
+
+
             // var_dump($auth, $email, $password);
             // die();
 
@@ -94,7 +96,12 @@ class Auth extends CI_Controller
                     redirect('pageRW/index');
                 } else if ($auth->role_id == "4") {
                     $this->session->set_userdata('email', $auth->email);
-                    // $this->session->set_userdata('nama', $auth->nama);
+
+                    $nik = $auth->nik;
+                    $getRt = $this->model_auth->getRt($nik);
+                    $this->session->set_userdata('rt', $getRt->rt);
+                    // var_dump($getRt->rt);
+                    // die();
                     $this->session->set_userdata('username', $auth->username);
                     $this->session->set_userdata('id_user', $auth->id_user);
                     $this->session->set_userdata('nik', $auth->nik);

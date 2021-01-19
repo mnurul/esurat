@@ -13,6 +13,7 @@
             <div class="card-header">
                 <nav class="navbar navbar">
                     <span class="navbar-brand mb-0 h1" style="font-size: 25px;">Rekap Data Penduduk</span>
+                    <!-- <span class="navbar-brand mb-0 h1" style="font-size: 25px;"><?= $this->session->userdata('rt'); ?></span> -->
                 </nav>
             </div>
             <div class="card-body">
@@ -37,13 +38,11 @@
                                 <td><?php echo $wg->status_rumah ?></td>
                                 <td><?php echo $wg->status_keluarga ?></td>
 
-                                <td> <?php echo anchor('pageRT/detail_warga/' . $wg->id_rekap_data, '<div class="btn btn-success btn-sm"><i class="fas fa-search-plus"></i></div>') ?> </td>
-                                <td> <?php echo anchor('pageRT/edit_warga/' . $wg->id_rekap_data, '<div class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></div>') ?> </td>
-                                <td> <?php echo anchor('pageRT/hapus_warga/' . $wg->id_rekap_data, '<div class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></div>') ?> </td>
+                                <td> <?php echo anchor('pageRT/detail_rekap/' . $wg->id_rekap_data, '<div class="btn btn-success btn-sm"><i class="fas fa-search-plus"></i></div>') ?> </td>
+                                <td> <?php echo anchor('pageRT/edit_rekap/' . $wg->id_rekap_data, '<div class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></div>') ?> </td>
+                                <td> <?php echo anchor('pageRT/hapus_rekap/' . $wg->id_rekap_data, '<div class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></div>') ?> </td>
                             </tr>
-
                         <?php endforeach; ?>
-
                     </table>
                 </div>
             </div>
@@ -67,6 +66,10 @@
                         <div class="form-group">
                             <label>NIK</label>
                             <input type="text" name="nik" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <!-- <label>rt</label> -->
+                            <input type="text" name="rt" value="<?= $this->session->userdata('rt'); ?>" hidden class="form-control">
                         </div>
                         <div class="form-group">
                             <label>Keterangan</label>

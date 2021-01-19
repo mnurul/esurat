@@ -16,9 +16,32 @@ class M_surat_rt extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('tb_rekap_data');
-        // $this->db->join('tb_warga', 'tb_warga.nik = tb_rekap_data.nik');
+        $this->db->join('tb_warga', 'tb_warga.nik = tb_rekap_data.nik');
         $query = $this->db->get();
         return $query;
+    }
+
+    public function detail_rekap($id_rekap_data)
+    {
+        $result = $this->db->where('id_rekap_data', $id_rekap_data)->get('tb_rekap_data');
+        if ($result->num_rows() > 0) {
+            return $result->result();
+        } else {
+            return false;
+        }
+    }
+
+    public function update_rekap($where, $data, $table)
+    {
+        $this->db->where($where);
+        $this->db->update($table, $data);
+        return $this->db->affected_rows();
+    }
+
+    public function hapus_rekap($where, $table)
+    {
+        $this->db->where($where);
+        $this->db->delete($table);
     }
 
     public function tampil_warga()
