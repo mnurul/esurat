@@ -100,4 +100,17 @@ class pageRW extends CI_Controller
         $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">Delete surat permohonan Success!!</div>');
         redirect('pageRW/index');
     }
+
+    public function dataPenduduk()
+    {
+        $rw = $this->session->userdata('rw');
+        $data['rekap'] = $this->M_surat_rt->getRekap($rw);
+        $data['rekap'] = $this->M_surat_rt->tampil_rekap()->result();
+        // var_dump($rw);
+        // die();
+        $this->load->view('templatesRT/header');
+        $this->load->view('templatesRT/sidebar');
+        $this->load->view('rw/dataPenduduk', $data);
+        $this->load->view('templatesRW/footer');
+    }
 }

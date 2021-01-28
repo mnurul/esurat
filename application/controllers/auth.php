@@ -93,9 +93,14 @@ class Auth extends CI_Controller
                     $this->session->set_userdata('username', $auth->username);
                     $this->session->set_userdata('id_user', $auth->id_user);
                     $this->session->set_userdata('nik', $auth->nik);
+
+                    $nik = $auth->nik;
+                    $getRw = $this->model_auth->getRw($nik);
+                    $this->session->set_userdata('rw', $getRw->rw);
                     redirect('pageRW/index');
                 } else if ($auth->role_id == "4") {
                     $this->session->set_userdata('email', $auth->email);
+                    $this->session->set_userdata('nik', $auth->nik);
 
                     $nik = $auth->nik;
                     $getRt = $this->model_auth->getRt($nik);

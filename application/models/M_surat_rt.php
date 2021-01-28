@@ -44,6 +44,8 @@ class M_surat_rt extends CI_Model
         $this->db->delete($table);
     }
 
+
+
     public function tampil_warga()
     {
         $this->db->select('id_warga');
@@ -98,6 +100,18 @@ class M_surat_rt extends CI_Model
         } else {
             return array();
         }
+    }
+
+    public function getRekap($rt)
+    {
+        $this->db->where('rt', $rt)
+            ->limit(1)
+            ->get('tb_rekap_data');
+        // if ($result->num_rows() > 0) {
+        //     return $result->row();
+        // } else {
+        //     return array();
+        // }
     }
 
     public function tambah_rekap($data, $table)

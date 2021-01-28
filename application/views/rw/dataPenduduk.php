@@ -18,8 +18,7 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <button class="btn btn-sm btn-primary mb-3 btn-small" data-toggle="modal" data-target="#tambah_warga"><i class="fas fa-plus fa-sm"></i> Tambah Data Rekap </button>
-                    <a href="<?= base_url(); ?>pageRT/exportData" class="btn btn-sm btn-primary mb-3 btn-small" style="float: right;">Export Data</a>
+                    <!-- <button class="btn btn-sm btn-primary mb-3 btn-small" data-toggle="modal" data-target="#tambah_warga"><i class="fas fa-plus fa-sm"></i> Tambah Data Rekap </button> -->
                     <table class="table table-bordered table-hover">
                         <tr class="text-center">
                             <th>NO</th>
@@ -39,9 +38,9 @@
                                 <td><?php echo $wg->status_rumah ?></td>
                                 <td><?php echo $wg->status_keluarga ?></td>
 
-                                <td> <?php echo anchor('pageRT/detail_rekap/' . $wg->id_rekap_data, '<div class="btn btn-success btn-sm"><i class="fas fa-search-plus"></i></div>') ?> </td>
-                                <td> <?php echo anchor('pageRT/edit_rekap/' . $wg->id_rekap_data, '<div class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></div>') ?> </td>
-                                <td> <?php echo anchor('pageRT/hapus_rekap/' . $wg->id_rekap_data, '<div class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></div>') ?> </td>
+                                <td> <?php echo anchor('pageRW/detail_rekap/' . $wg->id_rekap_data, '<div class="btn btn-success btn-sm"><i class="fas fa-search-plus"></i></div>') ?> </td>
+                                <td> <?php echo anchor('pageRW/edit_rekap/' . $wg->id_rekap_data, '<div class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></div>') ?> </td>
+                                <td> <?php echo anchor('pageRW/hapus_rekap/' . $wg->id_rekap_data, '<div class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></div>') ?> </td>
                             </tr>
                         <?php endforeach; ?>
                     </table>

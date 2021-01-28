@@ -104,8 +104,10 @@ class pageRT extends CI_Controller
 
     public function dataPenduduk()
     {
+        $rt = $this->session->userdata('rt');
+        $data['filterData'] = $this->M_surat_rt->getRekap($rt);
         $data['rekap'] = $this->M_surat_rt->tampil_rekap()->result();
-        // var_dump($data['rekap']);
+        // var_dump($data['filterData'], $rt);
         // die();
         $this->load->view('templatesRT/header');
         $this->load->view('templatesRT/sidebar');
@@ -116,24 +118,31 @@ class pageRT extends CI_Controller
     public function tambah_rekap()
     {
         $nik = $this->input->post('nik');
+        $dataWarga = $this->M_surat_rt->cek_nik($nik);
         $rt = $this->input->post('rt');
         $keterangan = $this->input->post('keterangan');
         $status_rumah = $this->input->post('status_rumah');
         $status_keluarga = $this->input->post('status_keluarga');
+        $nikRt = $this->session->userdata('nik');
+        $getRt = $this->session->userdata('rt');
 
-        $data = array(
-            'nik' => $nik,
-            'rt' => $rt,
-            'keterangan' => $keterangan,
-            'status_rumah' => $status_rumah,
-            'status_keluarga' => $status_keluarga,
-        );
-
-        // var_dump($data);
+        // var_dump($getRt, $dataWarga->rt);
         // die();
-
-        $this->M_surat_rt->tambah_rekap($data, 'tb_rekap_data');
-        redirect('pageRT/dataPenduduk');
+        if ($getRt == $dataWarga->rt) {
+            $data = array(
+                'nik' => $nik,
+                'rt' => $rt,
+                'rw' => $dataWarga->rw,
+                'keterangan' => $keterangan,
+                'status_rumah' => $status_rumah,
+                'status_keluarga' => $status_keluarga,
+            );
+            $this->M_surat_rt->tambah_rekap($data, 'tb_rekap_data');
+            redirect('pageRT/dataPenduduk');
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Update Data Rekap belum Berhasil</div>');
+            redirect('pageRT/dataPenduduk');
+        }
     }
 
     public function detail_rekap($id_rekap_data)
@@ -190,5 +199,19 @@ class pageRT extends CI_Controller
 
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Hapus Data Rekap Berhasil</div>');
         redirect('pageRT/dataPenduduk');
+    }
+
+    public function exportData()
+    {
+        // $rt = $this->session->userdata('rt');
+        // $data['filterData'] = $this->M_surat_rt->getRekap($rt);
+        $data['rekap'] = $this->M_surat_rt->tampil_rekap()->result();
+        // var_dump($data['filterData'], $rt);
+        // die();
+        // $this->load->view('templatesRT/header');
+        // $this->load->view('templatesRT/sidebar');
+        $this->load->view('rt/exportData', $data);
+        $this->load->view('rt/printExcel');
+        // $this->load->view('templatesRT/footer');
     }
 }
