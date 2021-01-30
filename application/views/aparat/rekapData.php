@@ -36,9 +36,9 @@
                                 <td><?php echo $s->file_excel ?></td>
                                 <td><?php echo $s->tgl_upload ?></td>
 
-                                <td> <?php echo anchor('pageAparat/detail_surat/' . $s->id, '<div class="btn btn-success btn-sm"><i class="fas fa-search-plus"></i></div>') ?> </td>
-                                <td> <?php echo anchor('pageAparat/edit_surat/' . $s->id, '<div class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></div>') ?> </td>
-                                <td> <?php echo anchor('pageAparat/hapus_surat/' . $s->id, '<div class="btn btn-warning btn-sm"><i class="fa fa-trash"></i></div>') ?> </td>
+                                <td> <?php echo anchor('pageAparat/detail_rekap/' . $s->id, '<div class="btn btn-success btn-sm"><i class="fas fa-search-plus"></i></div>') ?> </td>
+                                <!-- <td> <?php echo anchor('pageAparat/edit_surat/' . $s->id, '<div class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></div>') ?> </td>
+                                <td> <?php echo anchor('pageAparat/hapus_surat/' . $s->id, '<div class="btn btn-warning btn-sm"><i class="fa fa-trash"></i></div>') ?> </td> -->
                                 <td> <?php echo anchor('pageAparat/downloadExcel/' . $s->id, '<div class="btn btn-danger btn-sm"><i class="fa fa-file-pdf"></i></div>') ?> </td>
                             </tr>
 

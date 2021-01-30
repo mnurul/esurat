@@ -85,4 +85,14 @@ class M_surat_aparat extends CI_Model
             return array();
         }
     }
+
+    public function detail_rekap($id)
+    {
+        $this->db->select('tb_warga.nik, tb_warga.nama, tb_warga.rt,tb_warga.rw,tb_file_rekap.file_excel,tb_file_rekap.tgl_upload');
+        $this->db->from('tb_file_rekap');
+        $this->db->join('tb_warga', 'tb_warga.nik = tb_file_rekap.nik');
+        $this->db->where('id', $id);
+        $query = $this->db->get();
+        return $query;
+    }
 }

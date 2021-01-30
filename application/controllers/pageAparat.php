@@ -120,43 +120,27 @@ class pageAparat extends CI_Controller
 
     public function downloadExcel($id)
     {
-        // $getFileExcel = $this->M_surat_aparat->getFileExcel($id)->row_array();
-        // $file = '../../uploads/file_excel/' . $getFileExcel['file_excel'];
-        // var_dump($getFileExcel['file_excel'], $file);
-        // die();
-        // force_download($file, NULL);
-        // force_download('../../uploads/file_excel/test2.xlsx', NULL);
-
-        // header("Content-type: application/vnd-ms-excel");
-
-        // Mendefinisikan nama file ekspor "hasil-export.xls"
-        // header("Content-Disposition: attachment; filename=rekapData.xls");
-
-        // Tambahkan table
-        // $this->load->view('rt/exportData');
-
-        // include $file;
-
-        //load download helper
         $this->load->helper('download');
 
         //get file info from database
-        // $fileInfo = $this->file->getRows(array('id' => $id));
         $fileInfo = $this->M_surat_aparat->getFileExcel($id)->row_array();
         ob_clean();
 
-
         //file path
-        // $file = '../../uploads/file_excel/' . $fileInfo['file_excel'];
-        // $file = file_get_contents('../../uploads/file_excel/' . $fileInfo['file_excel']);
         $file = file_get_contents(base_url() . "uploads/file_excel/" . $fileInfo['file_excel']);
 
         $file_name = $fileInfo['file_excel'];
-        // var_dump($file);
-        // die();
-        //download file from directory
-        // force_download('../../uploads/file_excel/test2.xlsx', NULL);
-        // $name = '../../uploads/file_excel/test2.xlsx';
         force_download($file_name, $file);
+    }
+
+    public function detail_rekap($id)
+    {
+        $data['rekapData'] = $this->M_surat_aparat->detail_rekap($id)->result();
+        // var_dump($id, $data['rekapData']);
+        // die();
+        $this->load->view('templatesRW/header');
+        $this->load->view('templatesRW/sidebar');
+        $this->load->view('aparat/Detail_rekap', $data);
+        $this->load->view('templatesRW/footer');
     }
 }
