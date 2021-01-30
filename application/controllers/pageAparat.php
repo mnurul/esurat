@@ -1,6 +1,17 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+// Load library phpspreadsheet
+// require('../../uploads/file_excel/vendor/autoload.php');
+require('./application/third_party/vendor/autoload.php');
+
+// require('./excel/vendor/autoload.php');
+
+use PhpOffice\PhpSpreadsheet\Helper\Sample;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+// End load library phpspreadsheet
+
 
 class pageAparat extends CI_Controller
 {
@@ -9,6 +20,7 @@ class pageAparat extends CI_Controller
         // $this->load->model('model_auth', '', TRUE);
         parent::__construct();
         $this->load->model('M_surat_aparat');
+        $this->load->helper('download');
     }
     public function index()
     {
@@ -95,5 +107,56 @@ class pageAparat extends CI_Controller
 
         $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">Delete surat permohonan Success!!</div>');
         redirect('pageAparat/index');
+    }
+
+    public function rekapData()
+    {
+        $data['rekapData'] = $this->M_surat_aparat->getRekapData()->result();
+        $this->load->view('templatesAparat/header');
+        $this->load->view('templatesAparat/sidebar');
+        $this->load->view('aparat/rekapData', $data);
+        $this->load->view('templatesAparat/footer');
+    }
+
+    public function downloadExcel($id)
+    {
+        // $getFileExcel = $this->M_surat_aparat->getFileExcel($id)->row_array();
+        // $file = '../../uploads/file_excel/' . $getFileExcel['file_excel'];
+        // var_dump($getFileExcel['file_excel'], $file);
+        // die();
+        // force_download($file, NULL);
+        // force_download('../../uploads/file_excel/test2.xlsx', NULL);
+
+        // header("Content-type: application/vnd-ms-excel");
+
+        // Mendefinisikan nama file ekspor "hasil-export.xls"
+        // header("Content-Disposition: attachment; filename=rekapData.xls");
+
+        // Tambahkan table
+        // $this->load->view('rt/exportData');
+
+        // include $file;
+
+        //load download helper
+        $this->load->helper('download');
+
+        //get file info from database
+        // $fileInfo = $this->file->getRows(array('id' => $id));
+        $fileInfo = $this->M_surat_aparat->getFileExcel($id)->row_array();
+        ob_clean();
+
+
+        //file path
+        // $file = '../../uploads/file_excel/' . $fileInfo['file_excel'];
+        // $file = file_get_contents('../../uploads/file_excel/' . $fileInfo['file_excel']);
+        $file = file_get_contents(base_url() . "uploads/file_excel/" . $fileInfo['file_excel']);
+
+        $file_name = $fileInfo['file_excel'];
+        // var_dump($file);
+        // die();
+        //download file from directory
+        // force_download('../../uploads/file_excel/test2.xlsx', NULL);
+        // $name = '../../uploads/file_excel/test2.xlsx';
+        force_download($file_name, $file);
     }
 }

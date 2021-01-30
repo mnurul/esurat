@@ -14,9 +14,15 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item has-treeview menu-open">
-                    <a class="nav-link active" href="<?php echo base_url('pageRT/index') ?>">
+                    <a class="nav-link active" href="<?php echo base_url('pageAparat/index') ?>">
                         <!-- <i class="nav-icon fas fa-tachometer-alt"></i> -->
                         <span class="menu-sidebar" style="font-size: 13px;">Permohonan Surat<span>
+                    </a>
+                </li>
+                <li class="nav-item has-treeview menu-open">
+                    <a class="nav-link active" href="<?php echo base_url('pageAparat/rekapData') ?>">
+                        <!-- <i class="nav-icon fas fa-tachometer-alt"></i> -->
+                        <span class="menu-sidebar" style="font-size: 13px;">Rekap Data<span>
                     </a>
                 </li>
 

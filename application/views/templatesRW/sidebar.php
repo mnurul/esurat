@@ -25,6 +25,12 @@
                         <span class="menu-sidebar" style="font-size: 13px;">Data Penduduk<span>
                     </a>
                 </li>
+                <li class="nav-item has-treeview menu-open">
+                    <a class="nav-link active" href="<?php echo base_url('pageRW/sendData') ?>">
+                        <!-- <i class="nav-icon fas fa-tachometer-alt"></i> -->
+                        <span class="menu-sidebar" style="font-size: 13px;">Send Data<span>
+                    </a>
+                </li>
 
                 <!-- <li class="nav-item has-treeview menu-open">
                     <a class="nav-link active" href="<?php echo base_url('pageWarga/profile') ?>">

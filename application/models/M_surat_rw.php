@@ -11,6 +11,14 @@ class M_surat_rw extends CI_Model
         return $query;
     }
 
+    public function getRekap()
+    {
+        $this->db->select('*');
+        $this->db->from('tb_rekap_data');
+        $query = $this->db->get();
+        return $query;
+    }
+
     public function tampil_warga()
     {
         $this->db->select('id_warga');
@@ -63,6 +71,16 @@ class M_surat_rw extends CI_Model
             return $result->row();
         } else {
             return array();
+        }
+    }
+
+    public function detail_rekap($id_rekap_data)
+    {
+        $result = $this->db->where('id_rekap_data', $id_rekap_data)->get('tb_rekap_data');
+        if ($result->num_rows() > 0) {
+            return $result->result();
+        } else {
+            return false;
         }
     }
 }

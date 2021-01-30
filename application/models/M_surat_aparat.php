@@ -12,6 +12,15 @@ class M_surat_aparat extends CI_Model
         return $query;
     }
 
+    public function getRekapData()
+    {
+        $this->db->select('*');
+        $this->db->from('tb_file_rekap');
+        $this->db->join('tb_warga', 'tb_warga.nik = tb_file_rekap.nik');
+        $query = $this->db->get();
+        return $query;
+    }
+
     public function tampil_warga()
     {
         $this->db->select('id_warga');
@@ -19,6 +28,15 @@ class M_surat_aparat extends CI_Model
         $this->db->from('tb_warga');
         $this->db->where('id_warga');
         // $this->db->join('tb_user', 'tb_user.id = tb_surat.id_kurir');
+        $query = $this->db->get();
+        return $query;
+    }
+
+    public function getFileExcel($id)
+    {
+        $this->db->select('file_excel');
+        $this->db->from('tb_file_rekap');
+        $this->db->where('id', $id);
         $query = $this->db->get();
         return $query;
     }
